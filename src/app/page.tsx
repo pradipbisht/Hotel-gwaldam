@@ -5,9 +5,16 @@ import { getServerSession } from "@/lib/auth/session";
 import { isAdmin } from "@/lib/security/permissions";
 
 export default async function Home() {
-  const session = await getServerSession();
-  const showAdminLink = isAdmin(session?.user?.role as string | undefined);
-  const userLabel = session?.user?.name || session?.user?.email || null;
+  // Public homepage must render even if auth/DB env is misconfigured on Vercel.
+  let showAdminLink = false;
+  let userLabel: string | null = null;
+  try {
+    const session = await getServerSession();
+    showAdminLink = isAdmin(session?.user?.role as string | undefined);
+    userLabel = session?.user?.name || session?.user?.email || null;
+  } catch {
+    // ignore — still show the marketing page
+  }
 
   return (
     <PublicShell showAdminLink={showAdminLink} userLabel={userLabel}>

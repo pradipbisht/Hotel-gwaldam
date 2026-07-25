@@ -1,23 +1,52 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionCookie } from "better-auth/cookies";
-import { AUTH_ROUTES } from "@/lib/auth/constant";
 
 /**
- * Cookie presence only — NOT full DB validation.
- * Full check = getServerSession in layouts/actions.
+ * Edge-safe middleware (no better-auth / no @/ path aliases).
+ * Only checks cookie *presence* — layouts still run getServerSession for real auth.
+ *
+ * Better Auth default cookie names:
+ *   better-auth.session_token
+ *   __Secure-better-auth.session_token  (HTTPS / production)
  */
+const SESSION_COOKIE_NAMES = [
+  "better-auth.session_token",
+  "__Secure-better-auth.session_token",
+  "better-auth.session_data",
+  "__Secure-better-auth.session_data",
+] as const;
+
+const LOGIN = "/login";
+const DASHBOARD = "/dashboard";
+const VERIFY_EMAIL = "/verify-email";
+
+const AUTH_PAGES = new Set([
+  LOGIN,
+  "/register",
+  "/forgot-password",
+  "/reset-password",
+  VERIFY_EMAIL,
+]);
+
+function hasSessionCookie(request: NextRequest): boolean {
+  for (const name of SESSION_COOKIE_NAMES) {
+    if (request.cookies.get(name)?.value) return true;
+  }
+  // Fallback: any cookie starting with better-auth session prefix
+  for (const { name, value } of request.cookies.getAll()) {
+    if (!value) continue;
+    if (
+      name.includes("better-auth.session_token") ||
+      name.includes("better-auth.session_data")
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const sessionCookie = getSessionCookie(request);
-
-  const authPages = new Set<string>([
-    AUTH_ROUTES.login,
-    AUTH_ROUTES.register,
-    AUTH_ROUTES.forgotPassword,
-    AUTH_ROUTES.resetPassword,
-    AUTH_ROUTES.verifyEmail,
-  ]);
+  const sessionCookie = hasSessionCookie(request);
 
   const isProtected =
     pathname.startsWith("/dashboard") ||
@@ -26,19 +55,20 @@ export function middleware(request: NextRequest) {
 
   if (isProtected && !sessionCookie) {
     const url = request.nextUrl.clone();
-    url.pathname = AUTH_ROUTES.login;
+    url.pathname = LOGIN;
     url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }
 
-  if (authPages.has(pathname) && sessionCookie) {
-    if (pathname === AUTH_ROUTES.verifyEmail) {
+  if (AUTH_PAGES.has(pathname) && sessionCookie) {
+    if (pathname === VERIFY_EMAIL) {
       return NextResponse.next();
     }
     const url = request.nextUrl.clone();
-    url.pathname = AUTH_ROUTES.dashboard;
+    url.pathname = DASHBOARD;
     return NextResponse.redirect(url);
   }
+
   return NextResponse.next();
 }
 

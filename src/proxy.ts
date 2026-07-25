@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Edge-safe middleware (no better-auth / no @/ path aliases).
- * Only checks cookie *presence* — layouts still run getServerSession for real auth.
+ * Next.js 16: `middleware.ts` is deprecated — use `proxy.ts`.
+ * Cookie presence only; layouts still run getServerSession for real auth.
  *
- * Better Auth default cookie names:
+ * Better Auth cookie names:
  *   better-auth.session_token
  *   __Secure-better-auth.session_token  (HTTPS / production)
  */
@@ -31,7 +31,6 @@ function hasSessionCookie(request: NextRequest): boolean {
   for (const name of SESSION_COOKIE_NAMES) {
     if (request.cookies.get(name)?.value) return true;
   }
-  // Fallback: any cookie starting with better-auth session prefix
   for (const { name, value } of request.cookies.getAll()) {
     if (!value) continue;
     if (
@@ -44,7 +43,7 @@ function hasSessionCookie(request: NextRequest): boolean {
   return false;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const sessionCookie = hasSessionCookie(request);
 

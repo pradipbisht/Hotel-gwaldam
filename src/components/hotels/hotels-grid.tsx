@@ -56,7 +56,7 @@ export function HotelsGrid() {
         <button
           type="button"
           onClick={() => refetch()}
-          className="brand-btn-primary-light mt-4 !text-xs"
+          className="brand-btn-primary-light mt-4"
         >
           <RefreshCw className="h-3.5 w-3.5" />
           Retry
@@ -78,7 +78,7 @@ export function HotelsGrid() {
         <button
           type="button"
           onClick={() => refetch()}
-          className="brand-btn-ghost-light mt-5 !text-xs"
+          className="brand-btn-ghost-light mt-5"
         >
           <RefreshCw className="h-3.5 w-3.5" />
           Refresh
@@ -131,7 +131,7 @@ export function HotelsGrid() {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 to-transparent" />
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-0.5 text-[10px] font-medium text-stone-800 shadow-sm">
+                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-medium text-stone-800 shadow-sm">
                   <MapPin className="h-3 w-3 text-amber-700" />
                   {hotel.city}
                 </span>

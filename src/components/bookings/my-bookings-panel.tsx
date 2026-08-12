@@ -73,7 +73,7 @@ export function MyBookingsPanel() {
         </p>
         <a
           href="/hotels"
-          className="brand-btn-primary-light mt-5 inline-flex !text-xs"
+          className="brand-btn-primary-light mt-5 inline-flex"
         >
           Explore hotels
         </a>

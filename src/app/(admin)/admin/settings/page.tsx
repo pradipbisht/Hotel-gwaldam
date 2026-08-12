@@ -30,10 +30,10 @@ export default async function AdminSettingsPage() {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <Link href="/" className="brand-btn-ghost !text-xs">
+        <Link href="/" className="brand-btn-ghost">
           View public site
         </Link>
-        <Link href="/admin" className="brand-btn-primary !text-xs">
+        <Link href="/admin" className="brand-btn-primary">
           Dashboard
         </Link>
       </div>

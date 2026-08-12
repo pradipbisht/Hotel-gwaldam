@@ -167,7 +167,7 @@ export function HomeSections() {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 to-transparent" />
-                  <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-stone-900 shadow-sm">
+                  <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-semibold text-stone-900 shadow-sm">
                     {t.price}
                     <span className="font-normal text-stone-500"> / night</span>
                   </span>
@@ -179,7 +179,7 @@ export function HomeSections() {
                   <p className="mt-1 text-xs leading-relaxed text-stone-500">
                     {t.blurb}
                   </p>
-                  <p className="mt-2 text-[11px] text-stone-400">
+                  <p className="mt-2 text-xs text-stone-400">
                     Up to {t.guests} guests
                   </p>
                 </div>
@@ -255,7 +255,7 @@ export function HomeSections() {
                     <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-amber-600" />
                     {item.title}
                   </p>
-                  <p className="mt-1.5 text-[11px] leading-relaxed text-stone-500">
+                  <p className="mt-1.5 text-xs leading-relaxed text-stone-500">
                     {item.desc}
                   </p>
                 </div>
@@ -312,7 +312,7 @@ export function HomeSections() {
                 </p>
                 <Link
                   href="/hotels"
-                  className="brand-btn-primary-light mt-4 !text-xs"
+                  className="brand-btn-primary-light mt-4"
                 >
                   Reserve a room
                 </Link>
@@ -422,7 +422,7 @@ export function HomeSections() {
                     <p className="text-xs font-semibold text-stone-900">
                       {r.author}
                     </p>
-                    <p className="text-[10px] text-stone-500">{r.place}</p>
+                    <p className="text-xs text-stone-500">{r.place}</p>
                   </div>
                 </div>
               </blockquote>

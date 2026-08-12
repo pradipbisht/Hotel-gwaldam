@@ -17,7 +17,7 @@ export default function BookingsPage() {
               Live list — cancel without reloading the whole app.
             </p>
           </div>
-          <Link href="/hotels" className="brand-btn-ghost-light !text-xs">
+          <Link href="/hotels" className="brand-btn-ghost-light">
             Browse hotels
           </Link>
         </div>

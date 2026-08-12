@@ -11,9 +11,9 @@ type LogoProps = {
 };
 
 const sizes = {
-  sm: { box: "h-8 w-8", text: "text-xs", sub: "text-[9px]", icon: "text-[11px]" },
-  md: { box: "h-9 w-9", text: "text-[13px]", sub: "text-[10px]", icon: "text-xs" },
-  lg: { box: "h-12 w-12", text: "text-base", sub: "text-[11px]", icon: "text-sm" },
+  sm: { box: "h-9 w-9", text: "text-sm", sub: "text-[11px]", icon: "text-xs" },
+  md: { box: "h-10 w-10", text: "text-[15px]", sub: "text-xs", icon: "text-sm" },
+  lg: { box: "h-12 w-12", text: "text-lg", sub: "text-xs", icon: "text-base" },
 };
 
 /**

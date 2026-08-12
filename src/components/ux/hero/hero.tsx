@@ -155,8 +155,8 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="rounded-2xl bg-white/[0.04] px-4 py-3 sm:col-span-5">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.14em] text-stone-400 uppercase">
-                      <Calendar className="h-3 w-3 text-amber-400" />
+                    <label className="mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-[0.12em] text-stone-400 uppercase">
+                      <Calendar className="h-3.5 w-3.5 text-amber-400" />
                       Check-in
                     </label>
                     <input
@@ -165,12 +165,12 @@ export const Hero: React.FC<HeroProps> = ({
                       onChange={(e) =>
                         updateFilters({ checkIn: e.target.value })
                       }
-                      className="w-full cursor-pointer bg-transparent text-sm font-medium text-white outline-none [color-scheme:dark]"
+                      className="w-full cursor-pointer bg-transparent text-base font-medium text-white outline-none [color-scheme:dark]"
                     />
                   </div>
                   <div className="border-l border-white/10 pl-3">
-                    <label className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.14em] text-stone-400 uppercase">
-                      <Calendar className="h-3 w-3 text-amber-400" />
+                    <label className="mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-[0.12em] text-stone-400 uppercase">
+                      <Calendar className="h-3.5 w-3.5 text-amber-400" />
                       Check-out
                     </label>
                     <input
@@ -179,21 +179,21 @@ export const Hero: React.FC<HeroProps> = ({
                       onChange={(e) =>
                         updateFilters({ checkOut: e.target.value })
                       }
-                      className="w-full cursor-pointer bg-transparent text-sm font-medium text-white outline-none [color-scheme:dark]"
+                      className="w-full cursor-pointer bg-transparent text-base font-medium text-white outline-none [color-scheme:dark]"
                     />
                   </div>
                 </div>
               </div>
 
               <div className="rounded-2xl bg-white/[0.04] px-4 py-3 sm:col-span-4">
-                <label className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold tracking-[0.14em] text-stone-400 uppercase">
-                  <BedDouble className="h-3 w-3 text-amber-400" />
+                <label className="mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-[0.12em] text-stone-400 uppercase">
+                  <BedDouble className="h-3.5 w-3.5 text-amber-400" />
                   Room
                 </label>
                 <select
                   value={filters.roomType}
                   onChange={(e) => updateFilters({ roomType: e.target.value })}
-                  className="w-full cursor-pointer truncate bg-transparent text-sm font-medium text-white outline-none"
+                  className="w-full cursor-pointer truncate bg-transparent text-base font-medium text-white outline-none"
                 >
                   <option value="" className="bg-stone-900">
                     All mountain tiers
@@ -251,7 +251,7 @@ export const Hero: React.FC<HeroProps> = ({
             <button
               type="button"
               onClick={() => onOpenTour?.(hotel)}
-              className="brand-btn-ghost !text-xs"
+              className="brand-btn-ghost"
             >
               <Compass className="h-3.5 w-3.5 text-amber-300" />
               Virtual tour

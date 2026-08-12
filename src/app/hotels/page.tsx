@@ -26,7 +26,7 @@ export default async function HotelsPage() {
                 reload.
               </p>
             </div>
-            <Link href="/" className="brand-btn-ghost-light !text-xs">
+            <Link href="/" className="brand-btn-ghost-light">
               ← Home
             </Link>
           </div>

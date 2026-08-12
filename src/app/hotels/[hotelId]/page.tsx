@@ -118,7 +118,7 @@ export default async function HotelDetailPage({ params }: Props) {
                           </p>
                           <Link
                             href={`${AUTH_ROUTES.login}?next=${encodeURIComponent(`/hotels/${hotel.id}`)}`}
-                            className="brand-btn-primary-light mt-4 !text-xs"
+                            className="brand-btn-primary-light mt-4"
                           >
                             Sign in to book
                           </Link>
